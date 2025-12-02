@@ -60,7 +60,7 @@ LOTES = [
         'categoria': 'Ternero/a',
         'cantidad': 50,
         'imagen': 'ternero.jpg',
-        'detalles': 'Terneros raza Brahman, excelente genética, aptos para engorde o cría. Vacunados y desparasitados.',
+        'detalles': 'Terneros, excelente genética, aptos para engorde o cría. Vacunados y desparasitados.',
         'precio': 2500000
     },
     {
@@ -70,7 +70,7 @@ LOTES = [
         'categoria': 'Novillito',
         'cantidad': 30,
         'imagen': 'novillito.jpg',
-        'detalles': 'Novillitos Angus de 18 meses, peso promedio 350kg. Ideales para terminación en feedlot.',
+        'detalles': 'Novillitos de 18 meses, peso promedio 350kg. Ideales para terminación en feedlot.',
         'precio': 4200000
     },
     {
@@ -80,7 +80,7 @@ LOTES = [
         'categoria': 'Novillo',
         'cantidad': 40,
         'imagen': 'novillos.jpg',
-        'detalles': 'Novillos Hereford de 30 meses, peso promedio 480kg. Listos para faena o engorde.',
+        'detalles': 'Novillos de 30 meses, peso promedio 480kg. Listos para faena o engorde.',
         'precio': 5800000
     },
     {
@@ -90,7 +90,7 @@ LOTES = [
         'categoria': 'Vaquillona',
         'cantidad': 25,
         'imagen': 'vaquillonas.jpg',
-        'detalles': 'Vaquillonas Bradford de 24 meses, preñadas. Excelente para iniciar producción lechera o cárnica.',
+        'detalles': 'Vaquillonas de 24 meses, preñadas. Excelente para iniciar producción lechera o cárnica.',
         'precio': 5500000
     },
     {
@@ -100,7 +100,7 @@ LOTES = [
         'categoria': 'Vaca',
         'cantidad': 20,
         'imagen': 'vacas.jpg',
-        'detalles': 'Vacas Holando en producción, promedio 25 litros diarios. Excelente salud y genética.',
+        'detalles': 'Vacas en producción, promedio 25 litros diarios. Excelente salud y genética.',
         'precio': 7000000
     },
     {
@@ -110,7 +110,7 @@ LOTES = [
         'categoria': 'Toro',
         'cantidad': 5,
         'imagen': 'toros.jpg',
-        'detalles': 'Toros Nelore de 3 años, excelente conformación. Aptos para servicio en rodeos de cría.',
+        'detalles': 'Toros de 3 años, excelente conformación. Aptos para servicio en rodeos de cría.',
         'precio': 12000000
     }
 ]
