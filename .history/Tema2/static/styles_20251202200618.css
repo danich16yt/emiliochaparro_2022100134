@@ -428,3 +428,73 @@ footer {
 .tabla-consultas tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+@media (max-width: 768px) {
+    .layout-categoria {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+    
+    header nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h2 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    section h2 {
+        font-size: 24px;
+    }
+    
+    .grid-categorias {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-lotes {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabla-consultas {
+        font-size: 12px;
+    }
+    
+    .tabla-consultas th,
+    .tabla-consultas td {
+        padding: 8px 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    header h1 {
+        font-size: 20px;
+    }
+    
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h2 {
+        font-size: 24px;
+    }
+    
+    form {
+        padding: 20px;
+    }
+}
