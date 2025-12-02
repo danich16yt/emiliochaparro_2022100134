@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganadería - Venta de Ganado Vacuno</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ganadería El Campo</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Inicio</a>
+                <a href="#categorias">Categorías</a>
+                <a href="#lotes">Lotes</a>
+                <a href="#contacto">Contacto</a>
+                <a href="{{ url_for('ver_consultas') }}">Ver Consultas</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Venta de Ganado Vacuno</h2>
+            <p>Lotes de calidad para su establecimiento ganadero</p>
+        </div>
+    </section>
+
+    <section id="categorias" class="categorias">
+        <div class="container">
+            <h2>Categorías de Ganado</h2>
+            <div class="grid-categorias">
+                {% for cat in categorias %}
+                <div class="categoria-card">
+                    <h3>{{ cat.nombre }}</h3>
+                    <p>{{ cat.descripcion }}</p>
+                    <a href="{{ url_for('categoria', categoria_id=cat.id) }}" class="btn">Ver Lotes</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="lotes" class="lotes">
+        <div class="container">
+            <h2>Lotes Disponibles</h2>
+            <div class="grid-lotes">
+                {% for lote in lotes %}
+                <div class="lote-card">
+                    <img src="{{ url_for('static', filename='img/' + lote.imagen) }}" alt="{{ lote.nombre }}">
+                    <div class="lote-info">
+                        <span class="categoria-tag">{{ lote.categoria }}</span>
+                        <h3>{{ lote.nombre }}</h3>
+                        <p>{{ lote.detalles }}</p>
+                        <table class="tabla-detalles">
+                            <tr>
+                                <td><strong>Cantidad:</strong></td>
+                                <td>{{ lote.cantidad }} cabezas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Precio:</strong></td>
+                                <td class="precio">₲ {{ "{:,.0f}".format(lote.precio).replace(',', '.') }}</td>
+                            </tr>
+                        </table>
+                        <p class="precio-nota">Precio por cabeza</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2>Solicitar Información</h2>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form method="POST" action="{{ url_for('nueva_consulta') }}">
+                <div class="form-group">
+                    <label>Nombre y Apellido *</label>
+                    <input type="text" name="nombre_apellido" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Correo Electrónico *</label>
+                    <input type="email" name="correo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Celular *</label>
+                    <input type="text" name="celular" required placeholder="Ej: 0981234567">
+                </div>
+                
+                <div class="form-group">
+                    <label>Horario para Llamar *</label>
+                    <select name="horario_llamada" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Mañana (8:00 - 12:00)">Mañana (8:00 - 12:00)</option>
+                        <option value="Tarde (12:00 - 17:00)">Tarde (12:00 - 17:00)</option>
+                        <option value="Noche (17:00 - 20:00)">Noche (17:00 - 20:00)</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-submit">Enviar Consulta</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Ganadería El Campo</h4>
+                    <p>Calidad y confianza en cada lote</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>Paraguay<br>
+                    Tel: +595 XXX XXXXXX<br>
+                    Email: info@ganaderia.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Horarios</h4>
+                    <p>Lunes a Viernes: 8:00 - 18:00<br>
+                    Sábados: 8:00 - 12:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ganadería El Campo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

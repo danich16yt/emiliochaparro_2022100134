@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ categoria.nombre }} - Ganadería</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ganadería El Campo</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Inicio</a>
+                <a href="{{ url_for('index') }}#categorias">Categorías</a>
+                <a href="{{ url_for('index') }}#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <a href="{{ url_for('index') }}" class="btn-back">← Volver</a>
+            <h2>{{ categoria.nombre }}</h2>
+            <p>{{ categoria.descripcion }}</p>
+        </div>
+    </section>
+
+    <section class="categoria-detalle">
+        <div class="container">
+            <div class="layout-categoria">
+                <aside class="sidebar">
+                    <h3>Categorías</h3>
+                    <ul class="menu-categorias">
+                        {% for cat in categorias %}
+                        <li {% if cat.id == categoria.id %}class="active"{% endif %}>
+                            <a href="{{ url_for('categoria', categoria_id=cat.id) }}">{{ cat.nombre }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ url_for('index') }}#contacto" class="btn btn-block">Consultar</a>
+                </aside>
+
+                <main class="contenido-principal">
+                    {% if lotes %}
+                    <div class="grid-lotes">
+                        {% for lote in lotes %}
+                        <div class="lote-card">
+                            <img src="{{ url_for('static', filename='img/' + lote.imagen) }}" alt="{{ lote.nombre }}">
+                            <div class="lote-info">
+                                <h3>{{ lote.nombre }}</h3>
+                                <p>{{ lote.detalles }}</p>
+                                <table class="tabla-detalles">
+                                    <tr>
+                                        <td><strong>Cantidad:</strong></td>
+                                        <td>{{ lote.cantidad }} cabezas</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Precio:</strong></td>
+                                        <td class="precio">₲ {{ "{:,.0f}".format(lote.precio).replace(',', '.') }}</td>
+                                    </tr>
+                                </table>
+                                <p class="precio-nota">Precio por cabeza</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="mensaje-vacio">
+                        <p>No hay lotes disponibles en esta categoría.</p>
+                        <a href="{{ url_for('index') }}" class="btn">Ver todas las categorías</a>
+                    </div>
+                    {% endif %}
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Ganadería El Campo</h4>
+                    <p>Calidad y confianza en cada lote</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>Paraguay<br>
+                    Tel: +595 XXX XXXXXX<br>
+                    Email: info@ganaderia.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Horarios</h4>
+                    <p>Lunes a Viernes: 8:00 - 18:00<br>
+                    Sábados: 8:00 - 12:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ganadería El Campo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
