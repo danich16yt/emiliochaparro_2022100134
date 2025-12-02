@@ -3,13 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'tu-clave-secreta-aqui-cambiar-en-produccion'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://usuario:contraseña@localhost/emilio_chaparro_2022100134'
+app.config['SECRET_KEY'] = 'jsdfjs32k41g0432m5j43mj9drk3erk1f04kj'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Temporal1@localhost/emilio_chaparro_2022100134'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-# Modelo para consultas
 class Consulta(db.Model):
     __tablename__ = 'consultas'
     id = db.Column(db.Integer, primary_key=True)
@@ -19,7 +18,6 @@ class Consulta(db.Model):
     horario_llamada = db.Column(db.String(50), nullable=False)
     fecha_consulta = db.Column(db.DateTime, default=datetime.utcnow)
 
-# Datos precargados de categorías
 CATEGORIAS = [
     {
         'id': 1,
@@ -57,7 +55,7 @@ CATEGORIAS = [
 LOTES = [
     {
         'id': 1,
-        'nombre': 'Lote Terneros Brahman',
+        'nombre': 'Lote Terneros',
         'categoria_id': 1,
         'categoria': 'Ternero/a',
         'cantidad': 50,
@@ -67,7 +65,7 @@ LOTES = [
     },
     {
         'id': 2,
-        'nombre': 'Lote Novillitos Angus',
+        'nombre': 'Lote Novillitos ',
         'categoria_id': 2,
         'categoria': 'Novillito',
         'cantidad': 30,
@@ -77,41 +75,41 @@ LOTES = [
     },
     {
         'id': 3,
-        'nombre': 'Lote Novillos Hereford',
+        'nombre': 'Lote Novillos',
         'categoria_id': 3,
         'categoria': 'Novillo',
         'cantidad': 40,
-        'imagen': 'novillo.jpg',
+        'imagen': 'novillos.jpg',
         'detalles': 'Novillos Hereford de 30 meses, peso promedio 480kg. Listos para faena o engorde.',
         'precio': 5800000
     },
     {
         'id': 4,
-        'nombre': 'Lote Vaquillonas Bradford',
+        'nombre': 'Lote Vaquillonas ',
         'categoria_id': 4,
         'categoria': 'Vaquillona',
         'cantidad': 25,
-        'imagen': 'vaquillona.jpg',
+        'imagen': 'vaquillonas.jpg',
         'detalles': 'Vaquillonas Bradford de 24 meses, preñadas. Excelente para iniciar producción lechera o cárnica.',
         'precio': 5500000
     },
     {
         'id': 5,
-        'nombre': 'Lote Vacas Holando',
+        'nombre': 'Lote Vacas',
         'categoria_id': 5,
         'categoria': 'Vaca',
         'cantidad': 20,
-        'imagen': 'vaca.jpg',
+        'imagen': 'vacas.jpg',
         'detalles': 'Vacas Holando en producción, promedio 25 litros diarios. Excelente salud y genética.',
         'precio': 7000000
     },
     {
         'id': 6,
-        'nombre': 'Lote Toros Nelore',
+        'nombre': 'Lote Toros',
         'categoria_id': 6,
         'categoria': 'Toro',
         'cantidad': 5,
-        'imagen': 'toro.jpg',
+        'imagen': 'toros.jpg',
         'detalles': 'Toros Nelore de 3 años, excelente conformación. Aptos para servicio en rodeos de cría.',
         'precio': 12000000
     }
@@ -154,4 +152,4 @@ def ver_consultas():
     return render_template('consultas.html', consultas=consultas)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
